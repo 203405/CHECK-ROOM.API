@@ -1,8 +1,10 @@
-import express from 'express'
+import express from 'express';
 import user from './routers/user.routes.js';
+import TyH from './routers/TyH.routes.js';
 import { createConnection } from 'mysql';
-import {conexion}  from "./database/MySQL.database.js"
+import {conexion}  from "./database/MySQL.database.js";
 import cors from 'cors';
+
 
 const app = express()
 app.use(cors());
@@ -10,6 +12,7 @@ const port = 3000
 
 app.use(express.json({limit: '50mb'}));
 app.use('/api/checkroom/user', user);
+app.use('/api/checkroom/TyH', TyH);
 
 const connection = createConnection(conexion);
 connection.connect(function(error) {
